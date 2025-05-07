@@ -1,24 +1,21 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 import { getCollection } from "astro:content";
-import Footer from '../components/Footer.astro';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import BlogPost from '../components/BlogPost.astro';
-
-
-
+import Footer from "../components/Footer.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogPost from "../components/BlogPost.astro";
 
 const pageTitle = "Mi blog de Astro aprendizaje”";
 const allPosts = await getCollection("blog");
-
 ---
 
-    <BaseLayout pageTitle={pageTitle}>
-    <p>Aquí es donde publicaré sobre mi viaje de aprendizaje Astro.</p>
-    <ul>
-      {allPosts.map((post) =>         <BlogPost url={`/posts/${post.id}/`} title={post.data.title} />
-)}
-
-    </ul>
-      </BaseLayout>
-
+<BaseLayout pageTitle={pageTitle}>
+  <p>Aquí es donde publicaré sobre mi viaje de aprendizaje Astro.</p>
+  <ul>
+    {
+      allPosts.map((post) => (
+        <BlogPost url={`/posts/${post.id}/`} title={post.data.title} />
+      ))
+    }
+  </ul>
+</BaseLayout>
